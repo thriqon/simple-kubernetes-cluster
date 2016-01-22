@@ -2,3 +2,4 @@
 tls/*pem
 tls/*csr
 tls/ca.srl
+tls/admin.p12

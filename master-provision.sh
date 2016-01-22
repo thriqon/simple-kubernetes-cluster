@@ -2,8 +2,8 @@
 
 mkdir -p /etc/kubernetes/ssl/
 mv /tmp/*pem /etc/kubernetes/ssl/
-chmod 0600 etc/kubernetes/ssl/*-key.pem
-chown root:root etc/kubernetes/ssl/*-key.pem
+chmod 0600 /etc/kubernetes/ssl/*-key.pem
+chown root:root /etc/kubernetes/ssl/*-key.pem
 
 # FLANNEL
 mkdir -p /etc/flannel
@@ -12,7 +12,7 @@ FLANNELD_IFACE=192.168.50.100
 FLANNELD_ETCD_ENDPOINTS=http://192.168.50.101:2379/
 EOF
 
-mkdir -p etc/systemd/system/flanneld.service.d/
+mkdir -p /etc/systemd/system/flanneld.service.d/
 cat > /etc/systemd/system/flanneld.service.d/40-ExecStartPre-symlink.conf << EOF
 [Service]
 ExecStartPre=/usr/bin/ln -sf /etc/flannel/options.env /run/flannel/options.env
