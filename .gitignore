@@ -1,0 +1,4 @@
+.vagrant/
+tls/*pem
+tls/*csr
+tls/ca.srl
