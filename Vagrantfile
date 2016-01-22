@@ -50,6 +50,7 @@ Vagrant.configure("2") do |config|
 		n.vm.provision :shell, inline: 'echo "Environment=ETCD_ADVERTISE_CLIENT_URLS=http://192.168.50.101:2379" >> /etc/systemd/system/etcd2.service.d/40-listen-address.conf', privileged: true
 		n.vm.provision :shell, inline: "systemctl start etcd2", privileged: true
 		n.vm.provision :shell, inline: "systemctl enable etcd2", privileged: true
+		n.vm.provision :shell, inline: "until curl http://127.0.0.1:8080/version ; do sleep 5 ; done"
 	end
 
 
